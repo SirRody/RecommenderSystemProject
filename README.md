@@ -66,10 +66,10 @@ RecommenderSystemProject/
 
 ## Key Insights
 
-- **Matrix Factorization performed best**, demonstrating the power of latent factor models for sparse data
-- **Simplicity beats complexity** - Matrix Factorization (4.1s) outperformed Neural Networks (2696s) with similar accuracy
-- **Proper evaluation matters** - Overall RMSE (0.473) was misleading; test-only RMSE (0.991) revealed true performance
-- **Scalability is crucial** - Production systems need both accuracy and speed, making Matrix Factorization ideal
+- **Matrix Factorization performed best**, being 1.5% more accurate than EM while 29 times faster
+- **Simplicity beats complexity** - Matrix Factorization (4.1s) beat Neural Networks (2696s) despite being simpler
+- **Proper evaluation matters** - We learned to use test-only RMSE instead of overall RMSE for fair comparison
+- **Scalability is crucial** - Production systems need speed (4 seconds) as much as accuracy (0.99 RMSE)
 
 ## Real-World Applications
 
@@ -84,7 +84,7 @@ RecommenderSystemProject/
 
 ## Conclusion
 
-This project successfully demonstrates that matrix factorization algorithms can master movie recommendation tasks, achieving **91% of theoretical optimal performance** while being **29 times faster** than traditional EM clustering. The progression from simple clustering to advanced factorization shows how AI can handle increasingly complex recommendation scenarios.
+This project demonstrates that matrix factorization achieves **1.5% better accuracy** with **29× faster training** than traditional EM clustering. The real insight: **simpler algorithms often outperform complex ones** when properly implemented.
 
 The work bridges statistical modeling and machine learning—a crucial step toward building recommendation systems that balance accuracy, speed, and scalability, with applications ranging from entertainment to e-commerce.
 
