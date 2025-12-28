@@ -20,31 +20,33 @@ Traditional recommendation systems use simple averages, but machine learning alg
 ## Project Structure
 
 RecommenderSystemProject/
-
-- **Algorithms**
-  - naive_em.py - Expectation-Maximization clustering
-  - kmeans.py - K-means clustering implementation
-  - em.py - Enhanced EM for incomplete data
-  - advanced_cf.py - Modern methods (Matrix Factorization, Neural Networks)
-
-- **Data & Environment**
-  - data/toy_data.txt - 2D synthetic data for testing
-  - data/netflix_incomplete.txt - 1200×1200 sparse rating matrix
-  - data/netflix_complete.txt - Ground truth for evaluation
-  - data/test_*.txt - Validation datasets
-
-- **Core Framework**
-  - common.py - Shared utilities and data structures
-  - main.py - Main execution and experiment runner
-  - test.py - Unit testing and validation
-
-- **Visualization & Results**
-  - images/ - Cluster visualizations for EM and K-means
-  - results/ - Performance comparison charts
-
-- **Configuration**
-  - requirements.txt - Python dependencies
-  - README.md - This documentation
+├── main.py                   # Main execution and experiments
+├── common.py                 # Shared utilities and data structures
+├── em.py                     # Enhanced EM for incomplete data
+├── naive_em.py               # Basic Expectation-Maximization
+├── kmeans.py                 # K-means clustering implementation
+├── advanced_cf.py            # Modern methods (Matrix Factorization, Neural Networks)
+├── test.py                   # Unit testing and validation
+├── requirements.txt          # Python dependencies
+├── README.md                 # This documentation
+├── .gitignore               # Git ignore rules
+├── data/                    # Dataset files
+│   ├── toy_data.txt
+│   ├── netflix_incomplete.txt
+│   ├── netflix_complete.txt
+│   └── test_*.txt
+├── images/                  # Cluster visualizations
+│   ├── kmeans_K=1.png
+│   ├── kmeans_K=2.png
+│   ├── kmeans_K=3.png
+│   ├── kmeans_K=4.png
+│   ├── em_K=1.png
+│   ├── em_K=2.png
+│   ├── em_K=3.png
+│   └── em_K=4.png
+└── results/                 # Performance charts
+    ├── advanced_methods_comparison.png
+    └── rmse_comparison.png
 
 ## Challenges Faced
 
