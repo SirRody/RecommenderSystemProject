@@ -32,14 +32,6 @@ Traditional recommendation systems use simple averages, but machine learning alg
 - `netflix_incomplete.txt` - Movie ratings with missing values
 - `netflix_complete.txt` - All ratings (ground truth)
 
-**Images (in `images/` folder):**
-- `kmeans_K=1.png` to `kmeans_K=4.png` - K-means clustering results
-- `em_K=1.png` to `em_K=4.png` - Expectation-Maximization results
-
-**Results (in `results/` folder):**
-- `advanced_methods_comparison.png` - Matrix completion visualization
-- `rmse_comparison.png` - Performance comparison chart
-
 **Results (in `results/` folder):**
 - Performance comparison charts
 
@@ -65,22 +57,6 @@ Traditional recommendation systems use simple averages, but machine learning alg
 | **Matrix Factorization (NMF)** | **0.991** | **4.1s** | **1.5% more accurate, 29× faster** |
 | Neural Collaborative Filtering | 1.027 | 2696s | 2% less accurate |
 | Alternating Least Squares | 1.132 | 50s | 12.5% less accurate |
-
-## Visual Results
-
-### Clustering Results (Toy Data)
-| K-means Clustering | EM Clustering |
-|-------------------|---------------|
-| ![K-means K=1](images/kmeans_K=1.png) | ![EM K=1](images/em_K=1.png) |
-| ![K-means K=2](images/kmeans_K=2.png) | ![EM K=2](images/em_K=2.png) |
-| ![K-means K=3](images/kmeans_K=3.png) | ![EM K=3](images/em_K=3.png) |
-| ![K-means K=4](images/kmeans_K=4.png) | ![EM K=4](images/em_K=4.png) |
-
-### Algorithm Performance Comparison
-![RMSE Comparison](results/rmse_comparison.png)
-
-### Matrix Completion Visualization  
-![Advanced Methods Comparison](results/advanced_methods_comparison.png)
 
 ## Key Insights
 
