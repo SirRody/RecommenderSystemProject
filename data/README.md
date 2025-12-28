@@ -1,0 +1,7 @@
+"# Data Directory" 
+"This directory contains datasets used in the project." 
+"" 
+"## Files:" 
+"- toy_data.txt: 2D synthetic data for algorithm testing" 
+"- test_*.txt: Small test datasets for validation" 
+"- netflix_*.txt: Netflix rating matrices (incomplete and complete)" 
