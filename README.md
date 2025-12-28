@@ -19,34 +19,29 @@ Traditional recommendation systems use simple averages, but machine learning alg
 
 ## Project Structure
 
-RecommenderSystemProject/
-├── main.py                   # Main execution and experiments
-├── common.py                 # Shared utilities and data structures
-├── em.py                     # Enhanced EM for incomplete data
-├── naive_em.py               # Basic Expectation-Maximization
-├── kmeans.py                 # K-means clustering implementation
-├── advanced_cf.py            # Modern methods (Matrix Factorization, Neural Networks)
-├── test.py                   # Unit testing and validation
-├── requirements.txt          # Python dependencies
-├── README.md                 # This documentation
-├── .gitignore               # Git ignore rules
-├── data/                    # Dataset files
-│   ├── toy_data.txt
-│   ├── netflix_incomplete.txt
-│   ├── netflix_complete.txt
-│   └── test_*.txt
-├── images/                  # Cluster visualizations
-│   ├── kmeans_K=1.png
-│   ├── kmeans_K=2.png
-│   ├── kmeans_K=3.png
-│   ├── kmeans_K=4.png
-│   ├── em_K=1.png
-│   ├── em_K=2.png
-│   ├── em_K=3.png
-│   └── em_K=4.png
-└── results/                 # Performance charts
-    ├── advanced_methods_comparison.png
-    └── rmse_comparison.png
+**Main Code Files (in `src/` folder):**
+- `main.py` - Run all experiments
+- `common.py` - Shared utilities
+- `em.py` - Expectation-Maximization algorithm
+- `kmeans.py` - K-means clustering
+- `advanced_cf.py` - Matrix Factorization & Neural Networks
+- `test.py` - Testing code
+
+**Data Files (in `data/` folder):**
+- `toy_data.txt` - Simple test data
+- `netflix_incomplete.txt` - Movie ratings with missing values
+- `netflix_complete.txt` - All ratings (ground truth)
+
+**Images (in `images/` folder):**
+- Cluster visualizations for K-means and EM
+
+**Results (in `results/` folder):**
+- Performance comparison charts
+
+**Configuration Files:**
+- `requirements.txt` - Python packages needed
+- `README.md` - This file
+- `.gitignore` - Files to exclude from Git
 
 ## Challenges Faced
 
