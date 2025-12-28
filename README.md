@@ -21,30 +21,30 @@ Traditional recommendation systems use simple averages, but machine learning alg
 
 RecommenderSystemProject/
 
-├── **Algorithms**
-│   ├── naive_em.py - Expectation-Maximization clustering
-│   ├── kmeans.py - K-means clustering implementation
-│   ├── em.py - Enhanced EM for incomplete data
-│   └── advanced_cf.py - Modern methods (Matrix Factorization, Neural Networks)
+- **Algorithms**
+  - naive_em.py - Expectation-Maximization clustering
+  - kmeans.py - K-means clustering implementation
+  - em.py - Enhanced EM for incomplete data
+  - advanced_cf.py - Modern methods (Matrix Factorization, Neural Networks)
 
-├── **Data & Environment**
-│   ├── data/toy_data.txt - 2D synthetic data for testing
-│   ├── data/netflix_incomplete.txt - 1200×1200 sparse rating matrix
-│   ├── data/netflix_complete.txt - Ground truth for evaluation
-│   └── data/test_*.txt - Validation datasets
+- **Data & Environment**
+  - data/toy_data.txt - 2D synthetic data for testing
+  - data/netflix_incomplete.txt - 1200×1200 sparse rating matrix
+  - data/netflix_complete.txt - Ground truth for evaluation
+  - data/test_*.txt - Validation datasets
 
-├── **Core Framework**
-│   ├── common.py - Shared utilities and data structures
-│   ├── main.py - Main execution and experiment runner
-│   └── test.py - Unit testing and validation
+- **Core Framework**
+  - common.py - Shared utilities and data structures
+  - main.py - Main execution and experiment runner
+  - test.py - Unit testing and validation
 
-├── **Visualization & Results**
-│   ├── images/ - Cluster visualizations for EM and K-means
-│   └── results/ - Performance comparison charts
+- **Visualization & Results**
+  - images/ - Cluster visualizations for EM and K-means
+  - results/ - Performance comparison charts
 
-├── **Configuration**
-│   ├── requirements.txt - Python dependencies
-│   └── README.md - This documentation
+- **Configuration**
+  - requirements.txt - Python dependencies
+  - README.md - This documentation
 
 ## Challenges Faced
 
