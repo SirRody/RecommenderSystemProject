@@ -1,10 +1,3 @@
-try:
-    from advanced_cf import run_advanced_methods
-    ADVANCED_METHODS_AVAILABLE = True
-except ImportError:
-    ADVANCED_METHODS_AVAILABLE = False
-
-###
 import numpy as np
 import matplotlib.pyplot as plt
 from common import init, plot, bic
@@ -12,8 +5,9 @@ from kmeans import run as kmeans_run
 from naive_em import run as em_run
 
 def main():
-    # 1. Load data
-    X = np.loadtxt('toy_data.txt')
+    # 1. Load data from data folder
+    X = np.loadtxt('../data/toy_data.txt')
+    
     
     # 2. Test values
     K_values = [1, 2, 3, 4]
@@ -48,7 +42,7 @@ def main():
         # Plot K-means result
         plot(X, best_kmeans_mixture, best_kmeans_post, 
              title=f"K-means, K={K}, Cost={best_cost:.1f}")
-        plt.savefig(f'kmeans_K={K}.png')
+        plt.savefig(f'../images/kmeans_K={K}.png')  # Save to images folder
         plt.close()
     
     # 4. Run EM (Part 2)
@@ -80,7 +74,7 @@ def main():
         # Plot EM result
         plot(X, best_em_mixture, best_em_post,
              title=f"EM Algorithm, K={K}, LL={best_ll:.1f}")
-        plt.savefig(f'em_K={K}.png')
+        plt.savefig(f'../images/em_K={K}.png')  # Save to images folder
         plt.close()
     
     # 5. Print final comparison
@@ -169,9 +163,9 @@ def run_netflix_em(K_values=[1, 12], seeds=[0, 1, 2, 3, 4], max_iter=100, tol=1e
     Run EM on Netflix incomplete data for given K values and seeds.
     Returns dict of best log likelihoods per K.
     """
-    # Load Netflix data
+    # Load Netflix data from data folder
     print("Loading Netflix incomplete data...")
-    netflix_data = np.loadtxt('netflix_incomplete.txt')
+    netflix_data = np.loadtxt('../data/netflix_incomplete.txt')
     N, M = netflix_data.shape
     print(f"Data shape: {N} users × {M} movies")
     
@@ -218,38 +212,17 @@ if __name__ == "__main__":
     print("\nResults to report:")
     for K, ll in sorted(netflix_results.items()):
         print(f"K = {K}: Best log likelihood = {ll:.6f}")
-#######
-        # ========== Advanced Methods ==========
-    if ADVANCED_METHODS_AVAILABLE:
-        print("\n" + "="*50)
-        print("Advanced Collaborative Filtering Methods")
-        print("="*50)
-        
-        print("\nNote: These methods may take several minutes to run...")
-        
-        # Ask user if they want to run advanced methods
-        response = input("Run advanced methods? (y/n): ").lower().strip()
-        if response == 'y':
-            run_advanced_methods()
-    else:
-        print("\n" + "="*50)
-        print("Advanced Methods Not Available")
-        print("="*50)
-        print("\nTo run advanced methods, install:")
-        print("pip install numpy scikit-learn matplotlib torch")
-#####
-
-
-        # ========== Test Predictions Against Gold Targets ==========
+    
+    # ========== Test Predictions Against Gold Targets ==========
     print("\n" + "="*50)
     print("Testing Predictions Against Gold Targets")
     print("="*50)
     
-    # Load the gold complete matrix
-    X_gold = np.loadtxt('netflix_complete.txt')
+    # Load the gold complete matrix from data folder
+    X_gold = np.loadtxt('../data/netflix_complete.txt')
     
-    # Load the incomplete matrix
-    X_incomplete = np.loadtxt('netflix_incomplete.txt')
+    # Load the incomplete matrix from data folder
+    X_incomplete = np.loadtxt('../data/netflix_incomplete.txt')
     
     # Get the best mixture for K=12 (re-run or retrieve)
     # We need to run EM again for K=12 with the best seed (seed 1)
@@ -283,5 +256,27 @@ if __name__ == "__main__":
         n_total = X_gold.size
         print(f"Missing entries: {n_missing:,} / {n_total:,} ({n_missing/n_total*100:.1f}%)")
 
-
+    # ========== Advanced Methods ==========
+    try:
+        from advanced_cf import run_advanced_methods
+        ADVANCED_METHODS_AVAILABLE = True
+    except ImportError:
+        ADVANCED_METHODS_AVAILABLE = False
     
+    if ADVANCED_METHODS_AVAILABLE:
+        print("\n" + "="*50)
+        print("Advanced Collaborative Filtering Methods")
+        print("="*50)
+        
+        print("\nNote: These methods may take several minutes to run...")
+        
+        # Ask user if they want to run advanced methods
+        response = input("Run advanced methods? (y/n): ").lower().strip()
+        if response == 'y':
+            run_advanced_methods()
+    else:
+        print("\n" + "="*50)
+        print("Advanced Methods Not Available")
+        print("="*50)
+        print("\nTo run advanced methods, install:")
+        print("pip install numpy scikit-learn matplotlib torch")

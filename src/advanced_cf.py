@@ -77,13 +77,6 @@ class MatrixFactorizationRecommender:
     def predict_all(self):
         """Predict all ratings"""
         return self.user_factors @ self.item_factors.T
-    
-    def predict_missing(self, mask):
-        """Predict only missing entries"""
-        pred = self.predict_all()
-        # Set observed entries to original values
-        pred[mask] = X[mask]
-        return pred
 
 # ========== 2. NEURAL NETWORK WITH EMBEDDINGS ==========
 class RatingDataset(Dataset):
@@ -239,10 +232,10 @@ def sklearn_nmf_predict(X, mask, n_components=20):
 def run_advanced_methods():
     """Run all advanced collaborative filtering methods"""
     
-    # Load data
+    # Load data from data folder
     print("Loading Netflix data...")
-    X_incomplete = np.loadtxt('netflix_incomplete.txt')
-    X_complete = np.loadtxt('netflix_complete.txt')
+    X_incomplete = np.loadtxt('../data/netflix_incomplete.txt')
+    X_complete = np.loadtxt('../data/netflix_complete.txt')
     
     n_users, n_items = X_incomplete.shape
     mask = (X_incomplete != 0)  # True for observed ratings
@@ -365,7 +358,7 @@ def plot_comparison(results, X_incomplete, X_complete):
     axes[1, 2].set_ylabel('Users')
     
     plt.tight_layout()
-    plt.savefig('advanced_methods_comparison.png', dpi=150, bbox_inches='tight')
+    plt.savefig('../results/advanced_methods_comparison.png', dpi=150, bbox_inches='tight')
     plt.show()
     
     # Plot RMSE comparison
@@ -391,7 +384,7 @@ def plot_comparison(results, X_incomplete, X_complete):
                 f'{rmse:.4f}', ha='center', va='bottom')
     
     plt.tight_layout()
-    plt.savefig('rmse_comparison.png', dpi=150, bbox_inches='tight')
+    plt.savefig('../results/rmse_comparison.png', dpi=150, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":
