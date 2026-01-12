@@ -1,90 +1,67 @@
-# 📊 Sentiment Analysis: Amazon Food Reviews Classifier
+# 🎬 Netflix-Style Movie Recommender System
+### Building Smarter Movie Recommendations with Machine Learning
 
-## 🎯 Project Overview
-This project builds a **machine learning system** that automatically reads Amazon food reviews and determines if they're positive or negative. Think of it as a **robot taste-tester** that learns from thousands of customer opinions!
+## 📊 Project Overview
+Have you ever wondered how Netflix knows exactly what movies you'll love? This project builds the same kind of smart recommendation system that streaming services use. We compare 5 different algorithms to find the best way to predict movie ratings.
 
-**Key Stats:**
-- 3 machine learning algorithms implemented from scratch
-- 13,108 unique words analyzed
-- 80.8% accuracy on unseen reviews
-- 5,000+ lines of training data
+**What we achieved:**
+- ✅ **0.47 star average error** - Almost like knowing what you'd rate a movie!
+- ✅ **5 algorithms tested** - From basic to advanced machine learning
+- ✅ **Real data used** - 1,200 users, 1,200 movies, 1.4 million potential ratings
+- ✅ **Production-ready results** - Found the best balance of speed and accuracy
 
-## 🤔 The Problem
-Online shoppers face **review overload** - thousands of reviews for each product. How do you quickly understand what most customers think? This project solves that by automatically classifying reviews as **👍 Positive** or **👎 Negative**, helping shoppers make faster decisions and businesses understand customer feedback.
+## 🎯 The Problem We Solved
+**Imagine this:** Netflix has millions of users and thousands of movies. Most users only rate a few movies. How can Netflix guess what rating you'd give to a movie you haven't seen yet?
 
-## 📁 Project Structure
-**SentimentAnalysis-AmazonReviews/**
-- **main.py** - Main controller that runs all experiments
-- **project1.py** - Core algorithms (Perceptron, Average Perceptron, Pegasos)
-- **utils.py** - Helper functions for data loading and plotting
-- **test.py** - Testing script for debugging
-- **stopwords.txt** - Common words to ignore during analysis
-- **reviews_train.tsv** - Training data (3,500 reviews)
-- **reviews_val.tsv** - Validation data (500 reviews)
-- **reviews_test.tsv** - Test data (1,000 reviews)
+**Our challenge:** 
+- We had data for 1,200 users and 1,200 movies
+- 22.8% of ratings were missing (328,232 predictions needed!)
+- We could only use the existing ratings to guess the missing ones
 
-**How It Works:**
-1. Read reviews and break them into individual words
-2. Count word occurrences to create "word fingerprints"
-3. Train machine learning algorithms to recognize patterns
-4. Predict sentiment of new, unseen reviews
+## 🔬 The Algorithms We Tested
 
-## 🚧 Challenges Faced
-| Challenge | Solution |
-|-----------|----------|
-| Converting text to numbers | Used "Bag of Words" technique - each word becomes a numerical feature |
-| Too many unique words | Filtered 126 common stopwords (the, and, is, etc.) |
-| Preventing overfitting | Used regularization in Pegasos algorithm |
-| Choosing the best algorithm | Tested 3 approaches, Pegasos performed best |
-| Binary vs count features | Binary (yes/no) features beat count (frequency) features |
+### **1. EM Clustering (The Classic)**
+- **How it works:** Groups similar users together
+- **Like:** Putting people in "horror movie lovers" or "rom-com fans" groups
+- **Result:** Good baseline, but slower
 
-## 📊 Performance Summary
-### **Accuracy Results:**
-| Model | Validation Accuracy | Test Accuracy | Key Feature |
-|-------|---------------------|---------------|-------------|
-| **Pegasos** | 80.6% | 80.8% | ⭐ **BEST** with stopwords removed |
-| Average Perceptron | 80.0% | - | Good baseline performance |
-| Perceptron | 79.4% | - | Simple but effective |
+### **2. K-means (The Simple)**
+- **How it works:** Strict grouping of users
+- **Like:** Sorting people into clear boxes
+- **Result:** Fast, but less accurate for complex tastes
 
-### **Feature Engineering Impact:**
-- **Baseline (binary features):** 80.2%
-- **With stopwords removed:** 80.8% (+0.6% improvement)
-- **With word counts:** 77.0% (-3.2% decrease)
+### **3. Matrix Factorization (The Winner!)**
+- **How it works:** Finds hidden patterns in user preferences
+- **Like:** Discovering that people who like Sci-Fi also tend to like certain directors
+- **Result:** **Best overall** - fast and accurate
 
-## 💡 Key Insights
-1. **Simple beats complex**: Basic word presence (binary) worked better than counting word frequencies
-2. **Punctuation matters**: The exclamation mark "!" was the 3rd strongest positive indicator
-3. **Stopwords removal helps**: Filtering common words like "the", "and" improved accuracy
-4. **Food-specific signals**: "Delicious" was the #1 most positive word
-5. **Emphasis indicators**: ALL-CAPS words often signal strong sentiment
+### **4. Neural Network (The Fancy)**
+- **How it works:** Complex AI that learns deep patterns
+- **Like:** Having a super-smart assistant that learns your taste
+- **Result:** Powerful but slow
 
-## 🌍 Real World Applications
+### **5. Alternating Least Squares (The Industrial)**
+- **How it works:** Optimized for large systems
+- **Like:** How big companies handle millions of users
+- **Result:** Good for scaling up
 
-### **For Consumers:**
-- **Review summarizer**: "1,243 reviews: 85% positive, 15% negative"
-- **Smart filtering**: "Show me negative reviews mentioning 'spicy'"
-- **Trend alerts**: "Positive reviews for this cereal increased 40% this month"
+## 📊 Results: Who Won?
 
-### **For Businesses:**
-- **Quality monitoring**: Auto-detect product issues from review patterns
-- **Competitor analysis**: Compare sentiment across similar products
-- **Marketing insights**: "Customers love our chocolate flavor but hate the packaging"
+| Method | Accuracy (Error) | Speed | Best For |
+|--------|------------------|-------|----------|
+| EM Clustering | 1.0 stars error | 2 minutes | Learning the basics |
+| **Matrix Factorization** | **0.47 stars error** | **4 seconds** | **Real-world use** |
+| Neural Network | 0.49 stars error | 45 minutes | Complex patterns |
+| K-means | - | Fast | Simple grouping |
 
-### **For Researchers:**
-- **Public opinion mining**: Track sentiment about food trends (keto, vegan, gluten-free)
-- **Language analysis**: Study how emotion is expressed in online reviews
-- **A/B testing**: Compare review sentiment after product changes
+**Key Finding:** Matrix Factorization was the **clear winner** - almost as accurate as the fanciest methods but 600 times faster!
 
-## 🎓 Conclusion
-This project demonstrates that **even simple machine learning** can solve real business problems. With just basic word counting and linear classifiers, we achieved **80%+ accuracy** in predicting review sentiment. The real power comes from understanding **what works** (binary features, stopword removal) and **what doesn't** (word counts).
+## 🚀 How to Use This Project
 
-Future improvements could include:
-- **Emoji analysis** 😍 vs 😡
-- **Sarcasm detection** ("Oh GREAT, another broken package")
-- **Aspect-based sentiment** (separate ratings for taste, packaging, delivery)
+### **Installation (3 Steps):**
+1. **Open Command Prompt**
+2. **Type:** `pip install numpy scikit-learn matplotlib`
+3. **Press Enter** (wait for installation)
 
-## 👨‍💻 Author
-**Rodrick** - Data Scientist/ML Engineer
-
-As a passionate data scientist with a passion for turning raw data into actionable insights, I built this project to master the fundamentals of machine learning and natural language processing. What fascinates me most is how simple mathematical models can capture the complexities of human language and emotion. Beyond the code, I'm interested in how these techniques can create real business value - helping companies understand their customers better and helping consumers make more informed decisions. This project represents both technical learning and practical problem-solving, blending algorithm implementation with real-world application.
-
+### **Running the Project:**
+1. **Navigate to project folder:**
