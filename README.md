@@ -1,93 +1,90 @@
-# Netflix Recommender System: Collaborative Filtering Algorithms
+# 📊 Sentiment Analysis: Amazon Food Reviews Classifier
 
-## Project Overview
+## 🎯 Project Overview
+This project builds a **machine learning system** that automatically reads Amazon food reviews and determines if they're positive or negative. Think of it as a **robot taste-tester** that learns from thousands of customer opinions!
 
-This project explores how machine learning can predict user movie ratings using five different collaborative filtering approaches. Just as Netflix recommends movies based on your viewing history, these algorithms learn user preferences from sparse rating data to predict what movies you'll love.
+**Key Stats:**
+- 3 machine learning algorithms implemented from scratch
+- 13,108 unique words analyzed
+- 80.8% accuracy on unseen reviews
+- 5,000+ lines of training data
 
-Imagine teaching a computer to understand that users who love "The Matrix" and "Inception" will probably enjoy "Interstellar." That's exactly what this project demonstrates!
+## 🤔 The Problem
+Online shoppers face **review overload** - thousands of reviews for each product. How do you quickly understand what most customers think? This project solves that by automatically classifying reviews as **👍 Positive** or **👎 Negative**, helping shoppers make faster decisions and businesses understand customer feedback.
 
-## The Problem
+## 📁 Project Structure
+**SentimentAnalysis-AmazonReviews/**
+- **main.py** - Main controller that runs all experiments
+- **project1.py** - Core algorithms (Perceptron, Average Perceptron, Pegasos)
+- **utils.py** - Helper functions for data loading and plotting
+- **test.py** - Testing script for debugging
+- **stopwords.txt** - Common words to ignore during analysis
+- **reviews_train.tsv** - Training data (3,500 reviews)
+- **reviews_val.tsv** - Validation data (500 reviews)
+- **reviews_test.tsv** - Test data (1,000 reviews)
 
-Movie recommendation systems present a unique challenge for AI: they combine **sparse user data** with **diverse taste patterns**. Unlike simple classification problems, recommendation engines require:
+**How It Works:**
+1. Read reviews and break them into individual words
+2. Count word occurrences to create "word fingerprints"
+3. Train machine learning algorithms to recognize patterns
+4. Predict sentiment of new, unseen reviews
 
-- Predicting ratings from incomplete data (22.8% missing)
-- Identifying hidden patterns in user preferences
-- Scaling to thousands of users and movies
-- Balancing accuracy with computational speed
+## 🚧 Challenges Faced
+| Challenge | Solution |
+|-----------|----------|
+| Converting text to numbers | Used "Bag of Words" technique - each word becomes a numerical feature |
+| Too many unique words | Filtered 126 common stopwords (the, and, is, etc.) |
+| Preventing overfitting | Used regularization in Pegasos algorithm |
+| Choosing the best algorithm | Tested 3 approaches, Pegasos performed best |
+| Binary vs count features | Binary (yes/no) features beat count (frequency) features |
 
-Traditional recommendation systems use simple averages, but machine learning algorithms can discover complex patterns purely from rating data—just like Netflix learns your taste over time!
+## 📊 Performance Summary
+### **Accuracy Results:**
+| Model | Validation Accuracy | Test Accuracy | Key Feature |
+|-------|---------------------|---------------|-------------|
+| **Pegasos** | 80.6% | 80.8% | ⭐ **BEST** with stopwords removed |
+| Average Perceptron | 80.0% | - | Good baseline performance |
+| Perceptron | 79.4% | - | Simple but effective |
 
-## Project Structure
+### **Feature Engineering Impact:**
+- **Baseline (binary features):** 80.2%
+- **With stopwords removed:** 80.8% (+0.6% improvement)
+- **With word counts:** 77.0% (-3.2% decrease)
 
-**Main Code Files (in `src/` folder):**
-- `main.py` - Run all experiments
-- `common.py` - Shared utilities
-- `em.py` - Expectation-Maximization algorithm
-- `kmeans.py` - K-means clustering
-- `advanced_cf.py` - Matrix Factorization & Neural Networks
-- `test.py` - Testing code
+## 💡 Key Insights
+1. **Simple beats complex**: Basic word presence (binary) worked better than counting word frequencies
+2. **Punctuation matters**: The exclamation mark "!" was the 3rd strongest positive indicator
+3. **Stopwords removal helps**: Filtering common words like "the", "and" improved accuracy
+4. **Food-specific signals**: "Delicious" was the #1 most positive word
+5. **Emphasis indicators**: ALL-CAPS words often signal strong sentiment
 
-**Data Files (in `data/` folder):**
-- `toy_data.txt` - Simple test data
-- `netflix_incomplete.txt` - Movie ratings with missing values
-- `netflix_complete.txt` - All ratings (ground truth)
+## 🌍 Real World Applications
 
-**Results (in `results/` folder):**
-- Performance comparison charts
+### **For Consumers:**
+- **Review summarizer**: "1,243 reviews: 85% positive, 15% negative"
+- **Smart filtering**: "Show me negative reviews mentioning 'spicy'"
+- **Trend alerts**: "Positive reviews for this cereal increased 40% this month"
 
-**Configuration Files:**
-- `requirements.txt` - Python packages needed
-- `README.md` - This file
-- `.gitignore` - Files to exclude from Git
+### **For Businesses:**
+- **Quality monitoring**: Auto-detect product issues from review patterns
+- **Competitor analysis**: Compare sentiment across similar products
+- **Marketing insights**: "Customers love our chocolate flavor but hate the packaging"
 
-## Challenges Faced
+### **For Researchers:**
+- **Public opinion mining**: Track sentiment about food trends (keto, vegan, gluten-free)
+- **Language analysis**: Study how emotion is expressed in online reviews
+- **A/B testing**: Compare review sentiment after product changes
 
-1. **Data Sparsity**: Predicting 328,232 missing ratings from only 77.2% observed data
-2. **Algorithm Selection**: Choosing between probabilistic (EM), distance-based (K-means), and latent factor (Matrix Factorization) approaches
-3. **Evaluation Metrics**: Distinguishing between overall RMSE and test-only RMSE for fair comparison
-4. **Scalability**: Handling 1.44 million potential ratings efficiently
-5. **Overfitting Prevention**: Ensuring algorithms generalize to unseen ratings, not just memorize training data
+## 🎓 Conclusion
+This project demonstrates that **even simple machine learning** can solve real business problems. With just basic word counting and linear classifiers, we achieved **80%+ accuracy** in predicting review sentiment. The real power comes from understanding **what works** (binary features, stopword removal) and **what doesn't** (word counts).
 
-## Performance Summary
+Future improvements could include:
+- **Emoji analysis** 😍 vs 😡
+- **Sarcasm detection** ("Oh GREAT, another broken package")
+- **Aspect-based sentiment** (separate ratings for taste, packaging, delivery)
 
-| Algorithm | Test RMSE | Training Time | Performance vs EM |
-|---|---|---|---|
-| EM Clustering (K=12) | 1.006 | 120s | Baseline (100%) |
-| K-means Clustering (K=4) | - | 30s | Clustering only |
-| **Matrix Factorization (NMF)** | **0.991** | **4.1s** | **1.5% more accurate, 29× faster** |
-| Neural Collaborative Filtering | 1.027 | 2696s | 2% less accurate |
-| Alternating Least Squares | 1.132 | 50s | 12.5% less accurate |
+## 👨‍💻 Author
+**Rodrick** - Data Scientist/ML Engineer
 
-## Key Insights
+As a passionate data scientist with a passion for turning raw data into actionable insights, I built this project to master the fundamentals of machine learning and natural language processing. What fascinates me most is how simple mathematical models can capture the complexities of human language and emotion. Beyond the code, I'm interested in how these techniques can create real business value - helping companies understand their customers better and helping consumers make more informed decisions. This project represents both technical learning and practical problem-solving, blending algorithm implementation with real-world application.
 
-- **Matrix Factorization performed best**, being 1.5% more accurate than EM while 29 times faster
-- **Simplicity beats complexity** - Matrix Factorization (4.1s) beat Neural Networks (2696s) despite being simpler
-- **Proper evaluation matters** - We learned to use test-only RMSE instead of overall RMSE for fair comparison
-- **Scalability is crucial** - Production systems need speed (4 seconds) as much as accuracy (0.99 RMSE)
-
-## Real-World Applications
-
-1. **Streaming Services**: Netflix, Hulu, Disney+ content recommendations
-2. **E-commerce Platforms**: Amazon "customers who bought" suggestions
-3. **Music Streaming**: Spotify Discover Weekly playlist generation
-4. **Social Media**: YouTube/TikTok content recommendation algorithms
-5. **Book Recommendations**: Goodreads, Amazon Kindle suggestions
-6. **Food Delivery**: UberEats, DoorDash restaurant recommendations
-7. **Travel Platforms**: Airbnb, Booking.com personalized listings
-8. **Job Portals**: LinkedIn job recommendations based on profile and history
-
-## Conclusion
-
-This project demonstrates that matrix factorization achieves **1.5% better accuracy** with **29× faster training** than traditional EM clustering. The real insight: **simpler algorithms often outperform complex ones** when properly implemented.
-
-The work bridges statistical modeling and machine learning—a crucial step toward building recommendation systems that balance accuracy, speed, and scalability, with applications ranging from entertainment to e-commerce.
-
----
-
-## Author
-
-**Rodrick - Data Scientist & Machine Learning Engineer**
-
-A passionate developer exploring the intersection of machine learning and real-world applications. This project represents hands-on experience with implementing and comparing recommendation algorithms to solve practical business problems.
-
-"Building recommendation systems is about more than predicting ratings—it's about creating experiences that understand users, anticipate their needs, and deliver personalized value through intelligent algorithms."
