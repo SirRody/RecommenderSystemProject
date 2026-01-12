@@ -5,6 +5,8 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SirRody/RecommenderSystemProject/blob/main/demo.ipynb)
 [![View on GitHub](https://img.shields.io/badge/View-Jupyter_Notebook-blue?logo=jupyter)](demo.ipynb)
 
+Press the Jupyter Notebook button above to see the interactive demo
+
 ## 🛠 Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)
@@ -13,14 +15,6 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7%2B-yellow?logo=matplotlib)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
-
-## 📊 Algorithms Implemented
-
-![K-means](https://img.shields.io/badge/K--means-Clustering-8A2BE2)
-![EM Algorithm](https://img.shields.io/badge/EM-Clustering-FF69B4)
-![Matrix Factorization](https://img.shields.io/badge/Matrix-Factorization-green)
-![Neural Networks](https://img.shields.io/badge/Neural-Networks-9C27B0)
-![Collaborative Filtering](https://img.shields.io/badge/Collaborative-Filtering-3F51B5)
 
 ## Project Overview
 
@@ -113,16 +107,4 @@ python src/main.py
 
 # 4. Or explore the interactive demo
 jupyter notebook demo.ipynb
-
-Conclusion
-This project demonstrates that matrix factorization achieves 1.5% better accuracy with 29× faster training than traditional EM clustering. The real insight: simpler algorithms often outperform complex ones when properly implemented.
-
-The work bridges statistical modeling and machine learning—a crucial step toward building recommendation systems that balance accuracy, speed, and scalability, with applications ranging from entertainment to e-commerce.
-
-Author
-Rodrick - Data Scientist & Machine Learning Engineer
-
-A passionate developer exploring the intersection of machine learning and real-world applications. This project represents hands-on experience with implementing and comparing recommendation algorithms to solve practical business problems.
-
-"Building recommendation systems is about more than predicting ratings—it's about creating experiences that understand users, anticipate their needs, and deliver personalized value through intelligent algorithms."
 
